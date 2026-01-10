@@ -12,6 +12,10 @@ class User(db.Model):
     role = db.Column(db.String(20), default='user')
     created_at = db.Column(db.DateTime, server_default = func.now())
 
+    # relationships
+    tasks = db.relationship('Task', backref='user', lazy=True, cascade='all, delete-orphan')
+
+
     # password hashing using bcrypt
     def set_password(self, raw_password):
         self.password = bcrypt.generate_password_hash(raw_password).decode('utf-8')
