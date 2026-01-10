@@ -1,3 +1,4 @@
+from flask import jsonify
 from flask_jwt_extended import (
     create_access_token,
     create_refresh_token,
@@ -5,6 +6,7 @@ from flask_jwt_extended import (
     set_refresh_cookies,
     unset_jwt_cookies
 )
+
 
 def generate_tokens(user_id):
     access_token = create_access_token(identity=str(user_id))
@@ -30,6 +32,6 @@ def refresh_access_token():
     
 
 def logout_user():
-    resp = {'msg': 'successfully logged out'}
+    resp = jsonify({'msg': 'successfully logged out'})
     unset_jwt_cookies(resp)
     return resp

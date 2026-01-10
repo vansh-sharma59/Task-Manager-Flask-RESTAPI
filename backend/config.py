@@ -13,6 +13,14 @@ class Config:
     # Database URL from .env
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
 
+    # JWT settings
+    JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY', 'a-secret-jwt-key')
+    JWT_ACCESS_TOKEN_EXPIRES = int(os.getenv("JWT_ACCESS_TOKEN_EXPIRES", 3600))
+    JWT_REFRESH_TOKEN_EXPIRES = int(os.getenv("JWT_REFRESH_TOKEN_EXPIRES", 86400))
+    
+    # JSON settings
+    JSON_SORT_KEYS = False
+
 class DevelopmentConfig(Config):
     # Configuration for local development
     DEBUG = True
