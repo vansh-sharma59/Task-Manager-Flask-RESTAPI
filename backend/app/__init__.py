@@ -1,5 +1,5 @@
 from flask import Flask
-from .extensions import db, bcrypt, jwt, migrate
+from .extensions import db, bcrypt, jwt, migrate, ma
 from backend.config import Config_dict
 import os
 
@@ -21,5 +21,6 @@ def create_app(config_name):
     bcrypt.init_app(app)
     jwt.init_app(app)
     migrate.init_app(app, db)
+    ma.init_app(app)
 
     return app
