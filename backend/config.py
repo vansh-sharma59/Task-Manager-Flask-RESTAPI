@@ -35,7 +35,6 @@ class ProductionConfig(Config):
     DEBUG = False
     TESTING = False
 
-
 Config_dict = {
     'development' : DevelopmentConfig,
     'production' : ProductionConfig

@@ -9,6 +9,7 @@ if os.path.exists(dotenv_path):
     load_dotenv(dotenv_path)
 
 env = os.getenv('FLASK_ENV', 'development')
+print(env)
 
 app = create_app(env)
 
