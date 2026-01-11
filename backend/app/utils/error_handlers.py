@@ -49,3 +49,11 @@ def register_error_handlers(app):
             'error': 'Unauthorized',
             'message': 'Missing or invalid authentication token'
         }), 401
+
+    
+    @app.errorhandler(Exception)
+    def unhandled_exception(e):
+        return jsonify({
+            'error': 'Internal Server Error',
+            'message': 'unexpected error occured'
+        }), 500
