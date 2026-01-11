@@ -1,7 +1,7 @@
-from backend.app import create_app
+from app import create_app
 import os
 from dotenv import load_dotenv
-from backend.app.extensions import db
+from app.extensions import db
 
 dotenv_path = os.path.join(os.path.dirname(__file__), '.flaskenv')
 

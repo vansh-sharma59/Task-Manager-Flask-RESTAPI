@@ -1,6 +1,6 @@
 from flask import Flask
 from .extensions import db, bcrypt, jwt, migrate, ma
-from backend.config import Config_dict
+from config import Config_dict
 from .utils.error_handlers import register_error_handlers
 import os
 
