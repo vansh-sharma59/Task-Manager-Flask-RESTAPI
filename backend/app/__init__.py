@@ -30,8 +30,12 @@ def create_app(config_name):
     # blueprint registration
     from .routes.v1.auth_route import auth_bp
     from .routes.v1.task_route import task_bp
+    from .routes.v1.admin import user_admin_bp, task_admin_bp, monitor_bp
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(task_bp)
+    app.register_blueprint(user_admin_bp)
+    app.register_blueprint(task_admin_bp)
+    app.register_blueprint(monitor_bp)
 
     return app

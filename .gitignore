@@ -15,3 +15,7 @@ venv/
 
 # flask instance folder
 instance/
+
+# IDE & OS Specific Files
+.vscode/
+.idea/
