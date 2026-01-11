@@ -1,6 +1,7 @@
 from flask import Flask
 from .extensions import db, bcrypt, jwt, migrate, ma
 from config import Config_dict
+from .utils.error_handlers import register_error_handlers
 import os
 
 
@@ -23,6 +24,8 @@ def create_app(config_name):
     migrate.init_app(app, db)
     ma.init_app(app)
 
+    # register error handlers
+    register_error_handlers(app)
 
     # blueprint registration
     from .routes.v1.auth_route import auth_bp

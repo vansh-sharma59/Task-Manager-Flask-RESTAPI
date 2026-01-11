@@ -4,6 +4,7 @@ from ...models.task import Task
 from ...extensions import db
 from ...schemas import task_schema, tasks_schema
 from ...utils.jwt_utils import get_current_user_id
+from ...utils.error_handlers import validation_response
 
 
 task_bp = Blueprint('task_bp', __name__, url_prefix='/api/v1/tasks')
@@ -28,7 +29,7 @@ def create_task():
 
     errors = task_schema.validate(data)
     if errors:
-        return {'errors': errors}, 400
+        return validation_response(errors)
     
     new_task = Task(
         title= data.get('title'),

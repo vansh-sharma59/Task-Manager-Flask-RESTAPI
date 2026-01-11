@@ -3,6 +3,7 @@ from ...models.user import User
 from ...schemas import user_schema, register_schema, login_schema
 from ...extensions import db
 from ...utils.jwt_utils import generate_tokens, get_current_user_id, refresh_access_token, logout_user
+from ...utils.error_handlers import validation_response
 from flask_jwt_extended import jwt_required
 
 auth_bp = Blueprint('auth_bp', __name__, url_prefix='/api/v1/auth')
@@ -16,7 +17,7 @@ def register():
     
     errors = register_schema.validate(data)
     if errors:
-        return {'errors': errors}, 400
+        return validation_response(errors)
     
     new_user = User(
         username = data.get('username'),
@@ -44,7 +45,7 @@ def login():
 
     errors = login_schema.validate(data)
     if errors:
-        return {'errors': errors}, 400
+        return validation_response(errors)
     
     # check if user exists and password matches
     user = User.query.filter_by(email=data.get('email')).first()
