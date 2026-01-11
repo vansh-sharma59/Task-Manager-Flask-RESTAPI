@@ -54,6 +54,9 @@ def change_role(user_id):
     new_role = data.get('role')
     if str(user.id) == str(current_admin_id) and new_role != 'admin':
         return {'error': 'You cannot demote yourself from admin status'}, 403
+    
+    if user.role == 'admin' and new_role == 'user':
+        return {'error': 'You cannot demote user who has admin status'}, 403
 
     if new_role not in ['user', 'admin']:
         return {'error': f'Invalid role {new_role}, Allowed roles are: user, admin'}, 400

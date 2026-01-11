@@ -1,11 +1,13 @@
 import os 
-
+from dotenv import load_dotenv
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 project_root = os.path.abspath(os.path.join(basedir, '..'))
 instance_path = os.path.join(project_root, 'instance')
 
 os.makedirs(instance_path, exist_ok=True)
+
+load_dotenv()
 
 
 class Config:

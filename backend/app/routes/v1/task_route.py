@@ -59,7 +59,7 @@ def get_task(task_id):
 
 
 # update an existing task (partial or full)
-@task_bp.route('/<int:task_id>', methods=['PUT', 'PATCH'])
+@task_bp.route('/<int:task_id>', methods=['PATCH'])
 @jwt_required()
 def update_task(task_id):
     user_id = get_current_user_id()
