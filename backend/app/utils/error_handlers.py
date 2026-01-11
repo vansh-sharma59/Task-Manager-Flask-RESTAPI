@@ -43,7 +43,7 @@ def register_error_handlers(app):
     
 
     # catch jwt related errors
-    @app.errorhandlers(401)
+    @app.errorhandler(401)
     def unauthorized(e):
         return jsonify({
             'error': 'Unauthorized',
