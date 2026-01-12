@@ -41,5 +41,5 @@ def delete_task(task_id):
         return {'msg': 'Task deleted by admin'}, 200
     except Exception as e:
         db.session.rollback()
-        return {'error': str(e)}, 500
+        return {'error': 'Internal Server Error'}, 500
     

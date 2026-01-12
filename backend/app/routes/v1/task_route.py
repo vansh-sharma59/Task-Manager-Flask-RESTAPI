@@ -83,7 +83,7 @@ def update_task(task_id):
         return task_schema.jsonify(task), 200
     except Exception as e:
         db.session.rollback()
-        return {'error': 'could not update task', 'details': str(e)}, 500
+        return {'error': 'Internal Server Error'}, 500
     
 
 
@@ -100,4 +100,4 @@ def delete_task(task_id):
         return {'msg': 'task deleted successfully'}, 200
     except Exception as e:
         db.session.rollback()
-        return {'error': 'could not delete task', 'details': str(e)}, 500
+        return {'error': 'Internal Server Error'}, 500

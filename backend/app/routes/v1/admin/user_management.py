@@ -38,7 +38,7 @@ def delete_user(user_id):
         return {'msg': f'User {user_id} and their tasks deleted'}, 200
     except Exception as e:
         db.session.rollback()
-        return {'error': str(e)}, 500
+        return {'error': 'Internal Server Error'}, 500
     
 
 # change user role
@@ -74,5 +74,5 @@ def change_role(user_id):
             }, 200
     except Exception as e:
         db.session.rollback()
-        return {'error': str(e)}, 500
+        return {'error': 'Internal Server Error'}, 500
     
