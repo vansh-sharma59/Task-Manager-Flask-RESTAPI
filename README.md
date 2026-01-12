@@ -116,13 +116,8 @@ pip install -r requirements.txt
   
 - Create a .env file and add:  
   
-# Flask App  
 SECRET_KEY='any-secret-key'  
-  
-# Database  
 SQLALCHEMY_DATABASE_URI = production database url  
-  
-# JWT  
 JWT_SECRET_KEY = any-secret-key-for-jwt  
 JWT_ACCESS_TOKEN_EXPIRES=3600   # 1 hour  
 JWT_REFRESH_TOKEN_EXPIRES=86400 # 1 day  
