@@ -42,6 +42,13 @@ def register_error_handlers(app):
         }), 500
     
 
+    @app.errorhandler(415)
+    def unsupported_media_type(e):
+        return jsonify({
+            'error': 'Unsupported Media Type',
+            'message': 'Did you attempt to load JSON data but forgot to set Content-Type: application/json?'
+        }), 415
+
     # catch jwt related errors
     @app.errorhandler(401)
     def unauthorized(e):

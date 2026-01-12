@@ -73,6 +73,9 @@ def update_task(task_id):
     if 'description' in data:
         task.description = data.get('description')
     if 'status' in data:
+        new_status = data.get('status')
+        if new_status not in ('completed', 'pending'):
+            return {'error': f'Invalid status {new_status}, Allowed status are: pending, completed'}, 400
         task.status = data.get('status')
 
     try:
