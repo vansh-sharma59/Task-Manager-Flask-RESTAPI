@@ -107,12 +107,12 @@ python -m venv venv
 activate : venv/Scripts/activate - windows  
   
 
-3️⃣ Install dependencies  
+### 3️⃣ Install dependencies  
   
 pip install -r requirements.txt  
   
 
-4️⃣ Environment Variables  
+### 4️⃣ Environment Variables  
   
 - Create a .env file and add:  
   
