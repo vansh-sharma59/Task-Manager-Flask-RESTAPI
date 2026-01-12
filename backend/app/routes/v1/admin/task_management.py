@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_jwt_extended import jwt_required
-from ....models import Task
+from ....models import Task, User
 from ....extensions import db
 from ....utils.decorators import admin_required
 from ....utils.jwt_utils import get_current_user_id
@@ -23,6 +23,7 @@ def view_all_tasks():
 @jwt_required()
 @admin_required
 def view_user_tasks(user_id):
+    user = User.query.get_or_404(user_id)
     tasks = Task.query.filter_by(user_id=user_id).all()
     return tasks_schema.jsonify(tasks), 200
 
