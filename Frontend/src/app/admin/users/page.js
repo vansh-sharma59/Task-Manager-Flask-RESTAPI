@@ -27,7 +27,7 @@ export default function AdminUsers() {
 
   const promoteUser = async (id) => {
     try {
-      await api.patch(`/admin/users/${id}`, { role: "admin" });
+      await api.patch(`/admin/users/${id}/role`, { role: "admin" });
       setUsers(users.map(u => u.id === id ? { ...u, role: "admin" } : u));
     } catch (err) { setError("Promotion failed."); }
   };
