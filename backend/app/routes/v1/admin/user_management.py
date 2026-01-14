@@ -31,7 +31,15 @@ def view_user(user_id):
 @jwt_required()
 @admin_required
 def delete_user(user_id):
+    curr_user = get_current_user_id()
     user = User.query.get_or_404(user_id)
+
+    if curr_user == user:
+        return {'error': 'Cannot delete your own account.'}, 400
+    
+    if user.role == 'admin':
+        return {'error': 'You cannot delete "admin" accounts.'}, 400
+    
     try:
         db.session.delete(user)
         db.session.commit()

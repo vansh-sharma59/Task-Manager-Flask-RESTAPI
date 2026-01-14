@@ -58,14 +58,14 @@ export default function TasksPage() {
   const toggleStatus = async (task) => {
     try {
       const newStatus = task.status === "completed" ? "pending" : "completed";
-      const res = await api.put(`/tasks/${task.task_id}`, { status: newStatus });
+      const res = await api.patch(`/tasks/${task.task_id}`, { status: newStatus });
       setTasks(tasks.map((t) => (t.task_id === task.task_id ? res.data : t)));
     } catch { setError("Failed to update status"); }
   };
 
   const saveEdit = async (id) => {
     try {
-      const res = await api.put(`/tasks/${id}`, editData);
+      const res = await api.patch(`/tasks/${id}`, editData);
       setTasks(tasks.map((t) => (t.task_id === id ? res.data : t)));
       setEditingTaskId(null);
     } catch { setError("Failed to update task"); }
