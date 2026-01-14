@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from .extensions import db, bcrypt, jwt, migrate, ma
 from config import Config_dict
 from .utils.error_handlers import register_error_handlers
@@ -8,6 +9,13 @@ import os
 def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(Config_dict[config_name])
+
+    CORS(
+        app,
+        resources={r"/*": {"origins": "http://localhost:3000"}},
+        supports_credentials=True,
+        expose_headers=["Content-Type", "Authorization"]
+    )
 
     # ensures instance folder exists
     try:
